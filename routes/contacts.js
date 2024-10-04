@@ -11,15 +11,17 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  res.send({ id: await contactsController.saveContact(req.body) });
+  res.status(201).send({ id: await contactsController.saveContact(req.body) });
 });
 
 router.put("/:id", async (req, res) => {
-  res.send(await contactsController.updateContact(req.params.id, req.body));
+  res
+    .status(204)
+    .send(await contactsController.updateContact(req.params.id, req.body));
 });
 
 router.delete("/:id", async (req, res) => {
-    res.send(await contactsController.deleteContact(req.params.id));
-})
+  res.send(await contactsController.deleteContact(req.params.id));
+});
 
 module.exports = router;
