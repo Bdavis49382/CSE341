@@ -11,10 +11,23 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+
+  /* #swagger.parameters['reqBody'] = {
+      in: "body",
+      description: "request body",
+      type: "object",
+      required: true
+} */
   res.status(201).send({ id: await contactsController.saveContact(req.body) });
 });
 
 router.put("/:id", async (req, res) => {
+  /* #swagger.parameters['reqBody'] = {
+      in: "body",
+      description: "request body",
+      type: "object",
+      required: true
+} */
   res
     .status(204)
     .send(await contactsController.updateContact(req.params.id, req.body));
